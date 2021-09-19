@@ -1,0 +1,21 @@
+:host(app-post-item) {
+  width: 75%;
+  padding: 19px;
+  border: 1px solid #e3e3e3;
+  border-radius: 6px;
+  margin: 2% 0;
+  position: relative;
+}
+
+.content {
+  margin-top: 16px;
+}
+
+
+.btn {
+  &__sm {
+    position: absolute;
+    top: 9px;
+    right: 9px;
+  }
+}

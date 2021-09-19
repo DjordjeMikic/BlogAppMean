@@ -1,0 +1,31 @@
+.container {
+  height: calc(100vh - 71px);
+  width: 100%;
+  form {
+    min-height: 44%;
+    width: 50%;
+    justify-content: space-evenly !important;
+    padding: 16px 0;
+    box-shadow: 2px 2px #e3e3e3;
+  }
+}
+
+
+.input {
+  width: 90%;
+  font-size: 1.1rem;
+  padding: 11px 6px;
+  border: none;
+  outline: none;
+  border-radius: 6px;
+  box-shadow: 0 0 2px 2px lightblue;
+  &__submit {
+    box-shadow: none;
+    position: relative;
+    transition: all 0.4s;
+    &:hover {
+      color: #fafafa;
+      background-color: blue;
+    }
+  }
+}

@@ -1,0 +1,21 @@
+<div class="flex column container" *ngIf="post">
+
+  <h2>{{ post.title }}</h2>
+  <p>{{ post.content }}</p>
+
+  <div class="flex dc-cont">
+    <h6>
+      <a routerLink="{{ '../../category/' + post.category }}">
+        {{ post.category }}
+      </a>
+    </h6>
+    <h6>{{ post.createdAt | date: "dd/MM/yyyy" }}</h6>
+  </div>
+
+  <button *ngIf="logged" class="btn">
+    <a routerLink="{{ '../../user/change/' + post.title }}" class="flex">
+      Edit
+    </a>
+  </button>
+
+</div>

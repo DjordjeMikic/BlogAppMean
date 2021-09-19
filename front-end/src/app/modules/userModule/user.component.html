@@ -1,0 +1,13 @@
+<div class="flex container">
+  <app-side-nav></app-side-nav>
+  <div class="flex column inner-container">
+    <h1>User Main Component</h1>
+    <app-post-item
+      *ngFor="let post of posts"
+      class="flex column"
+      [title]="post.title"
+      [content]="post.content"
+      style="{ position: 'relative' }">
+    </app-post-item>
+  </div>
+</div>

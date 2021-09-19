@@ -1,0 +1,23 @@
+<div class="flex container">
+  <app-side-nav></app-side-nav>
+  <form
+    *ngIf="post"
+    (submit)="onSubmit()"
+    class="flex column inner-container">
+    <h2>{{ post.title }}</h2>
+    <app-e *ngIf="e" [desc]="e" (setE)="setE()" class="flex"></app-e>
+
+    <app-success
+      *ngIf="success"
+      [desc]="success"
+      (setSuccess)="setSuccess()"
+      class="flex"></app-success>
+
+    <textarea
+      class="add-input add-input__tarea"
+      name="content"
+      [(ngModel)]="post.content"
+    ></textarea>
+    <button class="submit" type="submit">Submit</button>
+  </form>
+</div>

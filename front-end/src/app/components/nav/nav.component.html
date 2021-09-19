@@ -1,0 +1,10 @@
+<div *ngIf="!loggedIn; else notLogged" class="flex nav-container">
+  <a routerLink="" class="nav flex">Home</a>
+  <a routerLink="about" class="nav flex">About</a>
+  <a routerLink="login" class="nav flex">Login</a>
+  <a routerLink="register" class="nav flex">Register</a>
+</div>
+<ng-template #notLogged>
+  <span><a routerLink="user" class="nav">User menu</a></span>
+  <p class="flex nav nav__logout" (click)="logout()">Logout</p>
+</ng-template>

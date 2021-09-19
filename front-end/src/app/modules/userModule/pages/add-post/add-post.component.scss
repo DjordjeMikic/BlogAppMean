@@ -1,0 +1,38 @@
+.add-input {
+  width: 75%;
+  font-size: 1.4rem;
+  padding: 9px;
+  border: none;
+  outline: none;
+  box-shadow: 0 2px #e3e3e3;
+  margin: 2% 0;
+  transition: all 0.4s;
+  &:focus {
+    box-shadow: 0 2px blue;
+  }
+
+  &__tarea {
+    max-height: 50vh;
+    font-size: 1.2rem;
+    resize: vertical;
+    &:focus {
+      outline: 1px solid lightblue;
+    }
+  }
+}
+
+.submit {
+  width: 35%;
+  font-size: 1.2rem;
+  padding: 9px;
+  color: #fafafa;
+  border: none;
+  outline: none;
+  border-radius: 6px;
+  background-color: blue;
+  transition: all 0.4s;
+  &:hover {
+    opacity: 0.75;
+    transform: scaleX(0.9);
+  }
+}

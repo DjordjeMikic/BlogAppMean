@@ -1,0 +1,8 @@
+<div class="flex column">
+  <app-post
+    *ngFor="let post of posts"
+    [title]="post.title"
+    [content]="post.content"
+    [lnk]="lnk">
+  </app-post>
+</div>

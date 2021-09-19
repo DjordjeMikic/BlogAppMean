@@ -1,0 +1,31 @@
+<div class="flex container">
+  <form (submit)="onSubmit()" class="flex column">
+
+    <app-e
+      *ngIf="e"
+      [desc]="e"
+      (setE)="setE($event)"
+      class="flex"></app-e>
+
+    <h2>Login</h2>
+
+    <input
+      type="text"
+      class="input"
+      name="username"
+      [(ngModel)]="username"
+      placeholder="Your username"
+    />
+
+    <input
+      type="password"
+      class="input"
+      name="password"
+      [(ngModel)]="password"
+      placeholder="Your password"
+    />
+
+    <button type="submit" class="input">Submit</button>
+    
+  </form>
+</div>

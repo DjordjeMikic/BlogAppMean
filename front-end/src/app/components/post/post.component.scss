@@ -1,0 +1,21 @@
+:host(app-post) {
+  width: 75%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.container {
+  width: 75%;
+  padding: 29px;
+  border-radius: 6px;
+  box-shadow: 0 0 4px 2px lightblue;
+  margin: 2% 0;
+  a {
+    text-decoration: none;
+    font-size: 1.2rem;
+    margin-bottom: 9px;
+    &:visited {
+      color: blue;
+    }
+  }
+}

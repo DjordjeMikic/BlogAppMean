@@ -1,0 +1,34 @@
+:host(app-success) {
+  width: 50%;
+}
+
+.container {
+  width: 75%;
+  padding: 19px;
+  justify-content: flex-start !important;
+  border: 1px solid #025e35;
+  border-radius: 6px;
+  background-color: #91e39e;
+  color: #025e35;
+  position: relative;
+
+  span {
+    font-size: 1.75rem;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    right: 19px;
+    transform: translateY(-50%);
+    transition: all 0.4s;
+
+    &:hover {
+      opacity: 0.4;
+      transform: translateY(-50%) scale(1.2,1.2);
+    }
+    
+  }
+  
+  p {
+    margin-left: 2%;
+  }
+}

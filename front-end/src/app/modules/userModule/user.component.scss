@@ -1,0 +1,11 @@
+.container {
+  height: calc(100vh - 71px);
+  width: 100%;
+  justify-content: flex-start !important;
+}
+.inner-container {
+  height: 100%;
+  justify-content: flex-start !important;
+  flex: 0 0 81%;
+  padding: 16px;
+}

@@ -1,0 +1,57 @@
+<div class="flex column container">
+  <h2>Register</h2>
+
+  <app-e *ngIf="e" [desc]="e" (setE)="setE($event)" class="flex"></app-e>
+
+  <app-success
+    *ngIf="success"
+    class="flex"
+    [desc]="success"
+    (setSuccess)="setSuccess($event)"></app-success>
+
+  <form (submit)="onSubmit()" class="flex column form">
+    <input
+      type="text"
+      name="name"
+      [(ngModel)]="info.name"
+      placeholder="Your name"
+      class="input"
+      required
+    />
+    <input
+      type="text"
+      name="lname"
+      [(ngModel)]="info.lname"
+      placeholder="Your lname"
+      class="input"
+      required
+    />
+    <input
+      type="text"
+      name="username"
+      [(ngModel)]="info.username"
+      placeholder="Your username"
+      class="input"
+      required
+    />
+    <input
+      type="email"
+      name="email"
+      [(ngModel)]="info.email"
+      placeholder="Your email"
+      class="input"
+      required
+    />
+    <input
+      type="password"
+      name="password"
+      [(ngModel)]="info.password"
+      placeholder="Your password"
+      class="input"
+      required
+    />
+
+    <button type="submit" class="input__submit input">Submit</button>
+
+  </form>
+</div>

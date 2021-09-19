@@ -1,0 +1,12 @@
+<h2>
+  <a routerLink="{{ '/post/' + title }}">
+    {{ title }}
+  </a>
+</h2>
+<p class="content">{{ content }}</p>
+
+<button class="btn btn__sm">
+  <a routerLink="{{ 'change/' + title }}" class="flex">
+    Edit
+  </a>
+</button>

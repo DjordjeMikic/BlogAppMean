@@ -1,0 +1,9 @@
+$color: #752424;
+:host(app-e) {
+  width: 90%;
+}
+.container {
+  background-color: #ff9999 !important;
+  border-color: $color !important;
+  color: $color !important;
+}
