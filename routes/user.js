@@ -13,6 +13,8 @@ const {
 } = require('../controllers/user');
 const verifyUser = require('../middleware/verifyUser');
 
+// @dest /api/user
+
 router.get('/', verifyUser, getUsers);
 
 router.post('/register', checkRegister, registerUser);

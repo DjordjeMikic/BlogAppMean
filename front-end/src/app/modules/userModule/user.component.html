@@ -7,6 +7,7 @@
       class="flex column"
       [title]="post.title"
       [content]="post.content"
+      (del)="del(post.title)"
       style="{ position: 'relative' }">
     </app-post-item>
   </div>

@@ -5,8 +5,10 @@
 </h2>
 <p class="content">{{ content }}</p>
 
-<button class="btn btn__sm">
+<button class="btn__sm btn">
   <a routerLink="{{ 'change/' + title }}" class="flex">
     Edit
   </a>
 </button>
+
+<button class="btn btn__del" (click)="rm(title)">&times;</button>

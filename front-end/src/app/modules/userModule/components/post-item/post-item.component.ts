@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-post-item',
@@ -11,10 +12,19 @@ import { Component, OnInit, Input } from '@angular/core';
 export class PostItemComponent implements OnInit {
   @Input() title!:string;
   @Input() content!:string;
+  @Output() del: EventEmitter<string> = new EventEmitter<string>();
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
+  }
+
+  rm(title: string) : void {
+    this.userService.deletePost(title)
+      .subscribe(data => {
+        // console.log(data);
+        this.del.emit(title);
+      })
   }
 
 }

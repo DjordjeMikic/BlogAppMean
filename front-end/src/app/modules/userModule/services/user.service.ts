@@ -2,11 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
-import jwt_decode from 'jwt-decode';
+import { decodeToken, UserData } from '../../../utils/decodeToken';
 
 import { Post } from '../../../types/post';
 import { RegisterInfo } from '../../../types/register';
-import { LoginInfo, UserInfo, AddingPost } from './type';
+import { LoginInfo, AddingPost } from './type';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +16,7 @@ export class UserService {
   api: string = 'http://localhost:8000/api/user';
   title: string = 'Neki titl';
   authToken: any = '';
-  user!:UserInfo;
+  user!:UserData;
   loggedIn:boolean = false;
   loginChange: Subject<boolean> = new Subject<boolean>();
 
@@ -39,7 +39,9 @@ export class UserService {
       let token = localStorage.getItem('bearer');
       this.setAuthToken(token);
       this.setLogged(true);
-      // console.log();
+      let info = decodeToken(token);
+      this.setUser(info);
+      // console.log(this.user);
     }
   }
 
@@ -57,7 +59,7 @@ export class UserService {
   }
 
   getMyPosts() : Observable<any> {
-    return this.http.get(`${this.api}/author/4`, { headers: this.getHeaders() });
+    return this.http.get(`${this.api}/author/${this.user.id}`, { headers: this.getHeaders() });
   }
 
   addPost(post: AddingPost) : Observable<string> {
@@ -68,11 +70,15 @@ export class UserService {
     return this.http.put<string>(`${this.api}/change/${title}`, { content }, { headers: this.getHeaders() });
   }
 
+  deletePost(title: string) : Observable<string> {
+    return this.http.delete<string>(`${this.api}/rm/${title}`, { headers: this.getHeaders() });
+  }
+
   getPost(title: string) : Observable<Post> {
     return this.http.get<Post>(`${this.api}/post/${title}`, { headers: this.getHeaders() });
   }
 
-  setUser(a: UserInfo) : void {
+  setUser(a: UserData) : void {
     this.user = a;
   }
 

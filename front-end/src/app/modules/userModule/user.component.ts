@@ -7,16 +7,23 @@ import { Post } from '../../types/post';
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.scss']
 })
+
 export class UserComponent implements OnInit {
   posts!:Post[];
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
+    this.userService.checkIsLogged();
     this.userService.getMyPosts()
       .subscribe(data => {
         this.posts = data;
-        console.log(this.posts);
       })
+  }
+
+  del(title: string) : void {
+    let arr = this.posts.filter(a => a.title !== title);
+    // console.log(arr);
+    this.posts = arr;
   }
 
 }

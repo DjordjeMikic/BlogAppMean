@@ -25,14 +25,14 @@ export class AddPostComponent implements OnInit {
       return;
     }
     this.userService.addPost({
-      id: 4,
+      id: this.userService.user?.id,
       title: this.title,
       content: this.content
     }).subscribe(data => {
       this.success = data;
       this.title = '';
       this.content = '';
-      // console.log(this.success);
+      console.log(this.userService.user?.id);
     })
   }
 

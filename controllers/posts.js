@@ -1,9 +1,10 @@
-let Posts = require('../models/posts');
+const Posts = require('../models/posts');
 
 const getPosts = async (req, res) => {
   try {
-    let result = await Posts.findAll({
-      where: { public: 'public' }
+    const result = await Posts.findAll({
+      where: { public: 'public' },
+      order: [['id', 'DESC']]
     });
     res.status(200).json(result);
   } catch(e) {
@@ -13,7 +14,7 @@ const getPosts = async (req, res) => {
 
 const getPost = async (req, res) => {
   try {
-    let result = await Posts.findOne({
+    const result = await Posts.findOne({
       where: { title: req.params.title, public: 'public' }
     });
     res.status(200).json(result);
@@ -24,8 +25,8 @@ const getPost = async (req, res) => {
 
 const findByCategory = async (req, res) => {
   try {
-    let result = await Posts.findAll({ where:
-      { category: req.params.category }
+    const result = await Posts.findAll({ where:
+      { category: req.params.category, public: 'public' }
     });
     res.status(200).json(result);
   } catch(e) {
@@ -35,8 +36,8 @@ const findByCategory = async (req, res) => {
 
 const findByAuthor = async (req, res) => {
   try {
-    let result = await Posts.findAll({
-      where: { author_id: req.params.author }
+    const result = await Posts.findAll({
+      where: { author_id: req.params.author, public: 'public' }
     });
     res.status(200).json(result);
   } catch(e) {

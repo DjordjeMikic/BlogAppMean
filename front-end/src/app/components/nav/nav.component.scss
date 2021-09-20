@@ -7,6 +7,20 @@
 .nav-container {
   height: 100%;
   width: 75%;
+
+  .active {
+    &::before {
+      content: '';
+      height: 9px;
+      width: 9px;
+      border-radius: 50%;
+      background-color: #fafafa;
+      position: absolute;
+      left: 50%;
+      bottom: 9px;
+      transform: translateX(-50%);
+    }
+  }
 }
 .nav {
   height: 100%;

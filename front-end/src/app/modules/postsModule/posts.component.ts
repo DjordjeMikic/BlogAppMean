@@ -18,14 +18,13 @@ export class PostsComponent implements OnInit {
 
   ngOnInit() {
     this.getPosts();
-    this.userService.checkIsLogged();
   }
 
   getPosts() : void {
     this.postsService.getPosts()
       .subscribe(data => {
         this.posts = data;
-        console.log(this.posts);
+        // console.log(this.posts);
       })
   }
 

@@ -14,8 +14,20 @@
 
 .btn {
   &__sm {
-    position: absolute;
-    top: 9px;
-    right: 9px;
+    top: 4px !important;
+    right: 75px !important;
+  }
+  &__del {
+    background-color: crimson !important;
+    font-size: 1.1rem;
+    padding: 6px 11px !important;
+    top: 9px !important;
+    right: 19px !important;
+    transition: 0.4s all;
+    &:hover {
+      opacity: 0.75;
+      box-shadow: none !important;
+      transform: scale(1.1,1.1);
+    }
   }
 }

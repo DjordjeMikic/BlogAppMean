@@ -1,11 +1,11 @@
-let User = require('../models/user');
-let Posts = require('../models/posts');
+const User = require('../models/user');
+const Posts = require('../models/posts');
 const { Op } = require('sequelize');
-let bcrypt = require('bcrypt');
-let jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 const checkRegister = async (req, res, next) => {
-  let user = await User.findOne({
+  const user = await User.findOne({
     where: {
       [Op.or]: [
         { email: req.body.email },
@@ -25,10 +25,10 @@ const registerUser = async (req, res) => {
   try {
     const { name, lname, username, email, password } = req.body;
 
-    let salt = await bcrypt.genSalt(10);
-    let hash = await bcrypt.hash(req.body.password, salt);
+    const salt = await bcrypt.genSalt(10);
+    const hash = await bcrypt.hash(req.body.password, salt);
 
-    let result = await User.create({
+    const result = await User.create({
       name,
       lname,
       username,
@@ -43,28 +43,27 @@ const registerUser = async (req, res) => {
 }
 
 const getUsers = async (req, res) => {
-  let result = await User.findAll();
+  const result = await User.findAll();
   res.status(200).json(result);
 }
 
 const login = async (req, res) => {
-  let result = await User.findOne({ where: { username: req.body.username } });
+  const result = await User.findOne({ where: { username: req.body.username } });
 
   if(!result) {
     res.status(400).json('User is not registered');
     return;
   }
 
-  let isMatch = await bcrypt.compare(req.body.password, result.password);
+  const isMatch = await bcrypt.compare(req.body.password, result.password);
 
   if(!isMatch) {
     res.status(400).json('Wrong credentials');
     return;
   }
+  const { password, ...rest } = result.dataValues;
 
-
-  delete result.password;
-  let token = jwt.sign({ result }, process.env.TOKEN_AUTH, {
+  const token = jwt.sign({ ...rest }, process.env.TOKEN_AUTH, {
     expiresIn: '1d'
   });
 
@@ -72,7 +71,7 @@ const login = async (req, res) => {
 }
 
 const getMyPosts = async (req, res) => {
-  let result = await Posts.findAll({
+  const result = await Posts.findAll({
     where: { author_id: req.params.id }
   });
 
@@ -83,7 +82,7 @@ const addPost = async (req, res) => {
   try {
     const { id, title, content } = req.body;
 
-    let result = await Posts.create({
+    const result = await Posts.create({
       title,
       content,
       author_id: id
@@ -98,7 +97,7 @@ const addPost = async (req, res) => {
 
 const updatePost = async (req, res) => {
   try {
-    let post = await Posts.findOne({
+    const post = await Posts.findOne({
       where: { title: req.params.title }
     });
 
@@ -114,7 +113,7 @@ const updatePost = async (req, res) => {
 
 const removePost = async (req, res) => {
   try {
-    let post = await Posts.findOne({
+    const post = await Posts.findOne({
       where: { title: req.params.title }
     });
 
@@ -132,7 +131,7 @@ const removePost = async (req, res) => {
 
 const getCertainPost = async (req, res) => {
   try {
-    let post = await Posts.findOne({
+    const post = await Posts.findOne({
       where: { title: req.params.title }
     });
 
@@ -144,7 +143,7 @@ const getCertainPost = async (req, res) => {
 
 const getPostById = async (req, res) => {
   try {
-    let post = await Posts.findByPk(parseInt(req.params.id));
+    const post = await Posts.findByPk(parseInt(req.params.id));
     res.status(200).json(post);
   } catch(e) {
     res.status(400).json(e);
